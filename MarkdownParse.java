@@ -9,15 +9,13 @@ import java.util.Scanner;
 public class MarkdownParse {
 
     public static ArrayList<String> getLinks(String markdown) {
+        String currentLine;
         ArrayList<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(markdown);
         // find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
         while(scnr.hasNextLine()) {
-            if (scnr.hasNext("!")) {
-                scnr.nextLine();
-                continue;
-            }
+            currentLine = scnr.nextLine();
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
@@ -27,14 +25,27 @@ public class MarkdownParse {
             if (openBracket < 0 || closeBracket < 0 || openParen < 0 || closeParen < 0) {
                 break;
             }
-            
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
-            
+            //check to make sure link is not an image
+            Boolean isImage = false;
+            if(openBracket != 0) {
+                String type = markdown.substring(openBracket - 1, openBracket);
+                isImage = type.equals("!");
+            }
+            //check that link follows format []()
+            int format = openParen - closeBracket;
+            Boolean linkFollowsFormat = true;
+            if(format != 1) {
+                linkFollowsFormat = false;
+            }
+            //check that link is a valid link
+            String link = markdown.substring(openParen + 1, closeParen);
+            Boolean linkIsValid = link.contains(" ");
+            if(isImage == false && linkIsValid == false && linkFollowsFormat == true) {
+                toReturn.add(link);
+            }
             currentIndex = closeParen + 1;
-            scnr.nextLine();
         }
         scnr.close();
-
         return toReturn;
     }
 
