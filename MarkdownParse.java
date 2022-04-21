@@ -1,3 +1,4 @@
+
 //https://howtodoinjava.com/java/io/java-read-file-to-string-examples/
 //https://github.com/natsukiromero/markdown-parser/blob/main/MarkdownParse.java
 
@@ -15,7 +16,6 @@ public class MarkdownParse {
         // find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
         while(scnr.hasNextLine()) {
-            scnr.nextLine();
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
@@ -40,10 +40,11 @@ public class MarkdownParse {
             //check that link is a valid link
             String link = markdown.substring(openParen + 1, closeParen);
             Boolean linkIsValid = link.contains(" ");
-            if(isImage == false && linkIsValid == false && linkFollowsFormat == true) {
+            if(isImage == false && linkIsValid == false && linkFollowsFormat == true && !(link.isEmpty())) {
                 toReturn.add(link);
             }
             currentIndex = closeParen + 1;
+            scnr.nextLine();
         }
         scnr.close();
         return toReturn;
