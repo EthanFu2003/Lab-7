@@ -9,13 +9,12 @@ import java.util.Scanner;
 public class MarkdownParse {
 
     public static ArrayList<String> getLinks(String markdown) {
-        String currentLine;
         ArrayList<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(markdown);
         // find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
         while(scnr.hasNextLine()) {
-            currentLine = scnr.nextLine();
+            scnr.nextLine();
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
