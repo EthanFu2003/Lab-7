@@ -20,4 +20,12 @@ public class MarkdownParseTest {
         assertEquals(List.of("https://something.com","some-thing.html"),
             MarkdownParse.getLinks(content));
     }
+
+    // THIS IS A TEST THAT FAILS
+    @Test
+    public void getLinksMyTester() throws IOException {
+        String content = Files.readString(Path.of("my-test-file1.md"));
+        assertEquals(List.of(""),
+            MarkdownParse.getLinks(content));
+    }
 }
