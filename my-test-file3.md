@@ -13,4 +13,6 @@
 info
 (morethings.html)
 
-[link](thisfileshouldprint.com)
+[]([insidebrackets])
+
+[link](3thisfileshouldprint.com)
