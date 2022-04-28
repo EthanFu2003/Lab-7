@@ -13,7 +13,8 @@ public class MarkdownParse {
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(markdown);
-        // find the next [, then find the ], then find the (, then read link upto next )
+        // find the next [, then find the ], then find the (, then read link up
+        // to next )
         int currentIndex = 0;
         while(scnr.hasNextLine()) {
             int openBracket = markdown.indexOf("[", currentIndex);
@@ -38,11 +39,13 @@ public class MarkdownParse {
             if(format != 1) {
                 linkFollowsFormat = false;
             }
-            //check that link is a valid link
+            
+            // check that link is a valid link
             String link = markdown.substring(openParen + 1, closeParen);
-            Boolean linkIsValid = link.contains(" ");
-            if(isImage == false && linkIsValid == false && linkFollowsFormat == 
-                true && !(link.isEmpty())) {
+            Boolean linkHasSpace = link.contains(" ");
+            Boolean linkHasBrackets = link.contains("[");
+            if(isImage == false && linkHasSpace == false && linkFollowsFormat == 
+                true && !(link.isEmpty()) && linkHasBrackets == false) {
                 
                     toReturn.add(link);
             }
