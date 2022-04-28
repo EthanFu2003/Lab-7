@@ -21,11 +21,25 @@ public class MarkdownParseTest {
             MarkdownParse.getLinks(content));
     }
 
-    // THIS IS A TEST THAT FAILS
+    // THIS IS A TEST THAT FAILS -> NOW THIS TEST SHOULD PASS
     @Test
-    public void getLinksMyTester() throws IOException {
+    public void getLinksMyTester1() throws IOException {
         String content = Files.readString(Path.of("my-test-file1.md"));
         assertEquals(List.of(),
+            MarkdownParse.getLinks(content));
+    }
+
+    @Test
+    public void getLinksMyTester2() throws IOException {
+        String content = Files.readString(Path.of("my-test-file2.md"));
+        assertEquals(List.of("onlythisshouldprint.com"),
+            MarkdownParse.getLinks(content));
+    }
+
+    @Test
+    public void getLinksMyTester3() throws IOException {
+        String content = Files.readString(Path.of("my-test-file3.md"));
+        assertEquals(List.of("3thisfileshouldprint.com"),
             MarkdownParse.getLinks(content));
     }
 }
