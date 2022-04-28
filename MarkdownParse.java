@@ -22,7 +22,8 @@ public class MarkdownParse {
             int closeParen = markdown.indexOf(")", openParen);
 
             // to handle case where one of them loops over the file again
-            if (openBracket < 0 || closeBracket < 0 || openParen < 0 || closeParen < 0) {
+            if (openBracket < 0 || closeBracket < 0 || openParen < 0 || 
+                closeParen < 0) {
                 break;
             }
             //check to make sure link is not an image
@@ -40,8 +41,10 @@ public class MarkdownParse {
             //check that link is a valid link
             String link = markdown.substring(openParen + 1, closeParen);
             Boolean linkIsValid = link.contains(" ");
-            if(isImage == false && linkIsValid == false && linkFollowsFormat == true && !(link.isEmpty())) {
-                toReturn.add(link);
+            if(isImage == false && linkIsValid == false && linkFollowsFormat == 
+                true && !(link.isEmpty())) {
+                
+                    toReturn.add(link);
             }
             currentIndex = closeParen + 1;
             scnr.nextLine();
