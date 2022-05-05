@@ -1,7 +1,5 @@
-
 //https://howtodoinjava.com/java/io/java-read-file-to-string-examples/
 //https://github.com/natsukiromero/markdown-parser/blob/main/MarkdownParse.java
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -9,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MarkdownParse {
-
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(markdown);
@@ -55,7 +52,6 @@ public class MarkdownParse {
         scnr.close();
         return toReturn;
     }
-
 
     public static void main(String[] args) throws IOException {
         Path fileName = Path.of(args[0]);
