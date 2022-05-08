@@ -1,5 +1,6 @@
 //https://howtodoinjava.com/java/io/java-read-file-to-string-examples/
 //https://github.com/natsukiromero/markdown-parser/blob/main/MarkdownParse.java
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MarkdownParse {
+
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         Scanner scnr = new Scanner(markdown);
@@ -30,6 +32,7 @@ public class MarkdownParse {
                 String type = markdown.substring(openBracket - 1, openBracket);
                 isImage = type.equals("!");
             }
+            
             //check that link follows format []()
             int format = openParen - closeBracket;
             Boolean linkFollowsFormat = true;
