@@ -49,6 +49,7 @@ public class MarkdownParse {
                 
                     toReturn.add(link);
             }
+            
             currentIndex = closeParen + 1;
             scnr.nextLine();
         }
