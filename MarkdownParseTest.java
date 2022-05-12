@@ -13,30 +13,30 @@ public class MarkdownParseTest {
 
     @Test
     public void getLinksTester() throws IOException {
-        String content = Files.readString(Path.of("test-file.md"));
-        assertEquals(List.of("https://something.com","some-thing.html"),
-            MarkdownParse.getLinks(content));
+        String content = Files.readString(Path.of("/Users/ethanfu/Documents/Desktop/Lab-7/test-file.md"));
+        assertEquals(List.of("https://something.com", "some-thing.html"),
+                MarkdownParse.getLinks(content));
     }
 
     // THIS IS A TEST THAT FAILS -> NOW THIS TEST SHOULD PASS
     @Test
     public void getLinksMyTester1() throws IOException {
-        String content = Files.readString(Path.of("my-test-file1.md"));
+        String content = Files.readString(Path.of("/Users/ethanfu/Documents/Desktop/Lab-7/my-test-file1.md"));
         assertEquals(List.of(),
-            MarkdownParse.getLinks(content));
+                MarkdownParse.getLinks(content));
     }
 
     @Test
     public void getLinksMyTester2() throws IOException {
-        String content = Files.readString(Path.of("my-test-file2.md"));
+        String content = Files.readString(Path.of("/Users/ethanfu/Documents/Desktop/Lab-7/my-test-file2.md"));
         assertEquals(List.of("onlythisshouldprint.com"),
-            MarkdownParse.getLinks(content));
+                MarkdownParse.getLinks(content));
     }
 
     @Test
     public void getLinksMyTester3() throws IOException {
-        String content = Files.readString(Path.of("my-test-file3.md"));
+        String content = Files.readString(Path.of("/Users/ethanfu/Documents/Desktop/Lab-7/my-test-file3.md"));
         assertEquals(List.of("3thisfileshouldprint.com"),
-            MarkdownParse.getLinks(content));
+                MarkdownParse.getLinks(content));
     }
 }
